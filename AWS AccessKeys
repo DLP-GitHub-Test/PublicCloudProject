@@ -1,0 +1,47 @@
+AWS Access Keys
+
+
+
+jobs:
+  deploy:
+    name: Upload to Amazon S3
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Configure AWS credentials from Test account
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ ASIAJZ3DXJKMP7MG3EKA }}
+        aws-secret-access-key: ${{ pARhvm1GmHyvLydUtFNCCMIIu4VEyaZNo9MbR3IJ }}
+         aws-secret-access-key: ${{ a23456789a123456789a123456789a123456789a }}
+        aws-region: us-east-1
+
+    - name: Copy files to the test website with the AWS CLI
+      run: |
+        aws s3 sync . s3://my-s3-test-website-bucket
+
+    - name: Configure AWS credentials from Production account
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ ASIAIQKNVCOQF4IQDSFQ }}
+        aws-secret-access-key: ${{ FTNBND5Q6mQyH6xGEe27V0Pce/03EShqVZTTsLzF }}
+        aws-region: us-west-2
+
+    - name: Copy files to the production website with the AWS CLI
+      run: |
+        aws s3 sync . s3://my-s3-prod-website-bucket
+        
+        
+        AWS Access Keys: {
+                            ASIAJGGB7IYTTL53QNBQ
+                            ASIAJZ3DXJKMP7MG3EKA
+                            ASIAIQAP7NCOV4IOP6HQ
+                            ASIAISJIZDYHNH3YZ4PA
+                            ASIAIQKNVCOQF4IQDSFQ
+                            ASIAJCVIKK2Z6PAUBDEQ
+                            AKIASTJ4Z5I5NNLHEIEC
+                            
+                          }  
